@@ -84,3 +84,41 @@ without specifying the --endpoint-url parameter or a profile.
 ├── variables.tf              # Variable definitions
 └── outputs.tf                # Output definitions
 ```
+
+## Testing first applies
+
+`./main.tf`
+
+```s
+provider "aws" {
+  access_key                  = "test"
+  secret_key                  = "test"
+  region                      = var.region
+  skip_credentials_validation = true
+  skip_metadata_api_check     = true
+  skip_requesting_account_id  = true
+
+  endpoints {
+    ec2 = "http://localhost:4566"
+  }
+}
+resource "aws_instance" "ec2_inst" {
+  ami           = "ami-0005e0cfe09cc9050"
+  instance_type = var.ec2_inst_type
+  tags = {
+    Name = "ec2_inst"
+  }
+}
+
+```
+
+running `terraform apply` first time to launch the instance  
+then double check with aws cli `aws ec2 describe-instances`  
+or in short output `aws ec2 describe-instances --filters "Name=instance-type,Values=t2.micro" --query "Reservations[].Instances[].InstanceId"`  
+(filters the list to only your t2.micro instances and outputs only the InstanceId values for each match.)
+
+```s
+[
+    "i-ccdc7104da4b8c11e"
+]
+```
