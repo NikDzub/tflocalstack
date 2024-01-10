@@ -126,13 +126,15 @@ then `awslocal ec2 describe-instances` or `awslocal ec2 describe-instances --fil
 
 ## Networking / AWS notes
 
-[ec2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html) = Elastic Compute Cloud,launch as many or as few virtual servers as you need, configure security and networking, and manage storage.
+[EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html) = Elastic Compute Cloud,launch as many or as few virtual servers as you need, configure security and networking, and manage storage.
 
-[vpc](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html) = Virtual Private Cloud, launch AWS resources in a logically isolated virtual network that you've defined. This virtual network closely resembles a traditional network that you'd operate in your own data center, After you create a VPC, you can add subnets.
+[VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html) = Virtual Private Cloud, launch AWS resources in a logically isolated virtual network that you've defined. This virtual network closely resembles a traditional network that you'd operate in your own data center, After you create a VPC, you can add subnets.  
+A VPC is an isolated portion of the AWS Cloud populated by AWS objects, such as Amazon EC2 instances.
 
-[subnets](https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html) = A subnet is a range of IP addresses in your VPC. You can create AWS resources, such as EC2 instances, in specific subnets.  
-Each subnet must reside entirely within one Availability Zone and cannot span zones. By launching AWS resources in separate Availability Zones, you can protect your applications from the failure of a single Availability Zone.  
-**Subnet types:**  
+[Subnet](https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html) = A subnet is a range of IP addresses in your VPC. You can create AWS resources, such as EC2 instances, in specific subnets.  
+Each subnet must reside entirely within one Availability Zone and cannot span zones. By launching AWS resources in separate Availability Zones, you can protect your applications from the failure of a single Availability Zone.
+You goota have subnets to launch resources in the vpc..
+
 **Public subnet** – The subnet has a direct route to an internet gateway. Resources in a public subnet can access the public internet.
 
 **Private subnet** – The subnet does not have a direct route to an internet gateway. Resources in a private subnet require a NAT device to access the public internet.
@@ -140,3 +142,16 @@ Each subnet must reside entirely within one Availability Zone and cannot span zo
 **VPN-only subnet** – The subnet has a route to a Site-to-Site VPN connection through a virtual private gateway. The subnet does not have a route to an internet gateway.
 
 **Isolated subnet** – The subnet has no routes to destinations outside its VPC. Resources in an isolated subnet can only access or be accessed by other resources in the same VPC.
+
+## Steps
+
+1.Create VPC with CIDR 10.0.0.0/16
+
+2.Create Subnets in VPC  
+usualy 2 private 2public for diffrent az
+lets say CIDR 10.0.0.0/24 for public and 10.0.1.0/24 for private
+
+3.Launch ec2 inst in the public subnet  
+chose a name, instance type, key-pair etc..  
+in network settings chose the VPC and the public subnet  
+because its a public sub we would enable 'auto assign public IP'
