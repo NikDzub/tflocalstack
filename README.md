@@ -38,7 +38,7 @@ docker run \
  localstack/localstack
 ```
 
-or just `localstack start` who cares
+or simply `localstack start`
 
 ## Ways to use AWS CLI
 
@@ -46,7 +46,8 @@ We can configure the AWS CLI to redirect AWS API requests to LocalStack
 by adding the `--endpoint-url=<localstack-url>` flag  
 example : `aws --endpoint-url=http://localhost:4566 kinesis list-streams`
 
-or edit `~/.aws/config` and `~/.aws/credentials` files to add our localstack profile
+or edit `~/.aws/config` and `~/.aws/credentials` files to add our localstack profile  
+then fag `aws s3 ls --profile localstack`
 
 or use `awslocal`  
 awslocal serves as a thin wrapper and a substitute for the standard aws command,  
@@ -86,7 +87,7 @@ without specifying the --endpoint-url parameter or a profile.
 └── outputs.tf                # Output definitions
 ```
 
-## Testing first applies
+## Testing first apply
 
 `./main.tf`
 
@@ -123,6 +124,8 @@ then `awslocal ec2 describe-instances` or `awslocal ec2 describe-instances --fil
     "i-ccdc7104da4b8c11e"
 ]
 ```
+
+terraform and localstack seem to work without any errors.
 
 ## Networking / AWS notes
 
