@@ -1,7 +1,5 @@
 https://docs.localstack.cloud/user-guide/integrations/terraform/
 
----
-
 localstack config show
 localstack config validate
 localstack start
@@ -9,12 +7,10 @@ docker ps -a
 localstack status services
 localstack status docker
 
----
+<h6>few ways to start localstack</h6>
 
-## few ways to start localstack
-
-# start LocalStack with Docker Compose by configuring a docker-compose.yml file.
-
+<p>start LocalStack with Docker Compose by configuring a docker-compose.yml file</p>
+`
 version: "3.8"
 
 services:
@@ -28,6 +24,7 @@ container_name: "${LOCALSTACK_DOCKER_NAME:-localstack-main}"
       # LocalStack configuration: https://docs.localstack.cloud/references/configuration/
       - DEBUG=${DEBUG:-0}
 volumes: - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack" - "/var/run/docker.sock:/var/run/docker.sock"
+`
 
 docker-compose up
 
