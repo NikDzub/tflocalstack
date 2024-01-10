@@ -1,3 +1,4 @@
+
 `https://docs.localstack.cloud/user-guide/integrations/terraform/`
 `localstack config show`
 `localstack config validate`
@@ -28,7 +29,7 @@ volumes: - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack" - "/var/run/
 `docker-compose up`
 
 start the LocalStack container using the Docker CLI instead of Docker-Compose
-```
+```sh
 docker run \
  --rm -it \
  -p 4566:4566 \
