@@ -55,7 +55,7 @@ without specifying the --endpoint-url parameter or a profile.
 
 ## Project structure
 
-```s
+```r
 ├── modules/                  # Terraform modules
 │   ├── vpc/                  # VPC module
 │   │   ├── main.tf
