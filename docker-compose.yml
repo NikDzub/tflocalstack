@@ -1,0 +1,15 @@
+version: '2.1'
+
+services:
+  localstack:
+    image: localstack/localstack
+    ports:
+      - '4566:4566' # Default edge port
+      - '4571:4571' # Local port for the Kinesis service
+    environment:
+      - SERVICES=s3,lambda,dynamodb,iam # Define the AWS services you want to mock
+      - DEBUG=1 # Enable debug mode
+      - DATA_DIR=/tmp/localstack/data # Data directory for persisting states
+    volumes:
+      - './.localstack:/tmp/localstack' # Mount the local directory
+      - '/var/run/docker.sock:/var/run/docker.sock' # Docker daemon socket
