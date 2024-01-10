@@ -145,7 +145,18 @@ You goota have subnets to launch resources in the vpc..
 
 [Security groups](https://docs.aws.amazon.com/vpc/latest/userguide/default-security-group.html) = In AWS VPCs, AWS Security Groups act as virtual firewalls, controlling the traffic for one or more stacks (an instance or a set of instances). When a stack is launched, it's associated with one or more security groups, which determine what traffic is allowed to reach it
 
-## Steps
+[NAT Gateway](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html) = A NAT gateway is a Network Address Translation (NAT) service. You can use a NAT gateway so that instances in a private subnet can connect to services outside your VPC but external services cannot initiate a connection with those instances.  
+If you have resources in multiple Availability Zones and they share one NAT gateway, and if the NAT gateway’s Availability Zone is down, resources in the other Availability Zones lose internet access. To improve resiliency, create a NAT gateway in each Availability Zone, and configure your routing to ensure that resources use the NAT gateway in the same Availability Zone.
+
+**Public (Default)**  
+Instances in private subnets can connect to the internet through a public NAT gateway, but cannot receive unsolicited inbound connections from the internet. You create a public NAT gateway in a public subnet and must associate an elastic IP address with the NAT gateway at creation. You route traffic from the NAT gateway to the internet gateway for the VPC. Alternatively, you can use a public NAT gateway to connect to other VPCs or your on-premises network. In this case, you route traffic from the NAT gateway through a transit gateway or a virtual private gateway.
+
+**Private**  
+Instances in private subnets can connect to other VPCs or your on-premises network through a private NAT gateway. You can route traffic from the NAT gateway through a transit gateway or a virtual private gateway. You cannot associate an elastic IP address with a private NAT gateway. You can attach an internet gateway to a VPC with a private NAT gateway, but if you route traffic from the private NAT gateway to the internet gateway, the internet gateway drops the traffic.
+
+Both private and public NAT gateways map the source private IPv4 address of the instances to the private IPv4 address of the NAT gateway, but in the case of a public NAT gateway, the internet gateway then maps the private IPv4 address of the public NAT Gateway to the Elastic IP address associated with the NAT Gateway. When sending response traffic to the instances, whether it's a public or private NAT gateway, the NAT gateway translates the address back to the original source IP address.
+
+## Steps / notes
 
 1. Create VPC with CIDR 10.0.0.0/16
 
@@ -172,4 +183,13 @@ You goota have subnets to launch resources in the vpc..
 
 6. Route the public subnet to the internet gateway  
    go to pub_route_table and add route, dest = 0.0.0.0/0 target = igw  
-   (now we have internet accses to the ec2 instance w ssh)
+   (now we have internet accses to the ec2 instance w ssh)  
+   what about the
+
+7. Launch ec2 inst in the private subnet
+   chose a name, instance type, key-pair etc..  
+   in network settings chose the VPC and the private subnet  
+   add a security group name
+   (we are able to ssh to the private ec2 from our public one  
+   but theres no internet acc to update pkgs for example.. NAT Gateway..
+   )
