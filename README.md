@@ -48,10 +48,11 @@ example : `aws --endpoint-url=http://localhost:4566 kinesis list-streams`
 
 or edit `~/.aws/config` and `~/.aws/credentials` files to add our localstack profile
 
-or use awslocal  
+or use `awslocal`  
 awslocal serves as a thin wrapper and a substitute for the standard aws command,  
 enabling you to run AWS CLI commands within the LocalStack environment  
-without specifying the --endpoint-url parameter or a profile.
+without specifying the --endpoint-url parameter or a profile.  
+`pip install awscli-local`
 
 ## Project structure
 
