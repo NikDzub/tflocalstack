@@ -55,7 +55,7 @@ without specifying the --endpoint-url parameter or a profile.
 
 ## Project structure
 
-```sh
+```s
 ├── modules/                  # Terraform modules
 │   ├── vpc/                  # VPC module
 │   │   ├── main.tf
@@ -114,7 +114,7 @@ resource "aws_instance" "ec2_inst" {
 
 running `terraform apply` first time to launch the instance
 
-`aws ec2 describe-instances` or in short output `aws ec2 describe-instances --filters "Name=instance-type,Values=t2.micro" --query "Reservations[].Instances[].InstanceId"`  
+then `awslocal ec2 describe-instances` or `awslocal ec2 describe-instances --filters "Name=instance-type,Values=t2.micro" --query "Reservations[].Instances[].InstanceId"`  
 (filters the list to only your t2.micro instances and outputs only the InstanceId values for each match.)
 
 ```s
