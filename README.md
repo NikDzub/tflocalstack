@@ -10,7 +10,7 @@ few ways to start localstack
 ---
 
 start LocalStack with Docker Compose by configuring a docker-compose.yml file
-```
+```yml
 version: "3.8"
 
 services:
