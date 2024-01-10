@@ -1,11 +1,10 @@
-https://docs.localstack.cloud/user-guide/integrations/terraform/
-
-localstack config show
-localstack config validate
-localstack start
-docker ps -a
-localstack status services
-localstack status docker
+-https://docs.localstack.cloud/user-guide/integrations/terraform/
+-localstack config show
+-localstack config validate
+-localstack start
+-docker ps -a
+-localstack status services
+-localstack status docker
 
 <h6>few ways to start localstack</h6>
 
