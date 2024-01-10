@@ -40,15 +40,34 @@ docker run \
 
 or just `localstack start` who cares
 
-## AWS CLI
+## Ways to use AWS CLI
 
 We can configure the AWS CLI to redirect AWS API requests to LocalStack  
 by adding the `--endpoint-url=<localstack-url>` flag  
 example : `aws --endpoint-url=http://localhost:4566 kinesis list-streams`
 
-or edit ~/.aws/config and ~/.aws/credentials files and add our localstack profile
+or edit `~/.aws/config` and `~/.aws/credentials` files to add our localstack profile
 
-I will use awslocal  
+or use awslocal  
 awslocal serves as a thin wrapper and a substitute for the standard aws command,  
 enabling you to run AWS CLI commands within the LocalStack environment  
 without specifying the --endpoint-url parameter or a profile.
+
+## Project structure
+
+```sh
+terraform-project/
+├── modules/
+│   ├── vpc/
+│   ├── security_groups/
+│   ├── rds/
+│   └── ...
+├── staging/
+│   ├── main.tf
+│   ├── variables.tf
+│   └── ...
+└── production/
+    ├── main.tf
+    ├── variables.tf
+    └── ...
+```
