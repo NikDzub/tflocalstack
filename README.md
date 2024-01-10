@@ -126,12 +126,10 @@ then `awslocal ec2 describe-instances` or `awslocal ec2 describe-instances --fil
 
 ## Networking / AWS notes
 
-## [EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html) = Elastic Compute Cloud,launch as many or as few virtual servers as you need, configure security and networking, and manage storage.
+[EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html) = Elastic Compute Cloud,launch as many or as few virtual servers as you need, configure security and networking, and manage storage.
 
 [VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html) = Virtual Private Cloud, launch AWS resources in a logically isolated virtual network that you've defined. This virtual network closely resembles a traditional network that you'd operate in your own data center, After you create a VPC, you can add subnets.  
 A VPC is an isolated portion of the AWS Cloud populated by AWS objects, such as Amazon EC2 instances.
-
----
 
 [Subnet](https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html) = A subnet is a range of IP addresses in your VPC. You can create AWS resources, such as EC2 instances, in specific subnets.  
 Each subnet must reside entirely within one Availability Zone and cannot span zones. By launching AWS resources in separate Availability Zones, you can protect your applications from the failure of a single Availability Zone.
@@ -143,9 +141,9 @@ You goota have subnets to launch resources in the vpc..
 
 **VPN-only subnet** – The subnet has a route to a Site-to-Site VPN connection through a virtual private gateway. The subnet does not have a route to an internet gateway.
 
-## **Isolated subnet** – The subnet has no routes to destinations outside its VPC. Resources in an isolated subnet can only access or be accessed by other resources in the same VPC.
+**Isolated subnet** – The subnet has no routes to destinations outside its VPC. Resources in an isolated subnet can only access or be accessed by other resources in the same VPC.
 
-## [Security groups](https://docs.aws.amazon.com/vpc/latest/userguide/default-security-group.html) = In AWS VPCs, AWS Security Groups act as virtual firewalls, controlling the traffic for one or more stacks (an instance or a set of instances). When a stack is launched, it's associated with one or more security groups, which determine what traffic is allowed to reach it
+[Security groups](https://docs.aws.amazon.com/vpc/latest/userguide/default-security-group.html) = In AWS VPCs, AWS Security Groups act as virtual firewalls, controlling the traffic for one or more stacks (an instance or a set of instances). When a stack is launched, it's associated with one or more security groups, which determine what traffic is allowed to reach it
 
 [NAT Gateway](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html) = A NAT gateway is a Network Address Translation (NAT) service. You can use a NAT gateway so that instances in a private subnet can connect to services outside your VPC but external services cannot initiate a connection with those instances.  
 If you have resources in multiple Availability Zones and they share one NAT gateway, and if the NAT gateway’s Availability Zone is down, resources in the other Availability Zones lose internet access. To improve resiliency, create a NAT gateway in each Availability Zone, and configure your routing to ensure that resources use the NAT gateway in the same Availability Zone.
@@ -192,6 +190,6 @@ Both private and public NAT gateways map the source private IPv4 address of the 
    chose a name, instance type, key-pair etc..  
    in network settings chose the VPC and the private subnet  
    add a security group name
-   (we are able to ssh to the private ec2 from our public one  
+   (we are able to ssh to the private ec2 from our public one
    but theres no internet acc to update pkgs for example.. NAT Gateway..
    )
