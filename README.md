@@ -56,18 +56,31 @@ without specifying the --endpoint-url parameter or a profile.
 ## Project structure
 
 ```sh
-terraform-project/
-├── modules/
-│   ├── vpc/
-│   ├── security_groups/
-│   ├── rds/
-│   └── ...
-├── staging/
-│   ├── main.tf
-│   ├── variables.tf
-│   └── ...
-└── production/
-    ├── main.tf
-    ├── variables.tf
-    └── ...
+├── modules/                  # Terraform modules
+│   ├── vpc/                  # VPC module
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   ├── subnets/              # Subnets module
+│   │   ├── ...
+│   ├── nat-gateway/          # NAT Gateway module
+│   │   ├── ...
+│   ├── rds/                  # RDS module
+│   │   ├── ...
+│   └── security-groups/      # Security groups module
+│       ├── ...
+│
+├── environments/             # Separate configurations for each environment
+│   ├── dev/                  # Development environment
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── terraform.tfvars
+│   ├── staging/              # Staging environment
+│   │   └── ...
+│   └── prod/                 # Production environment
+│       └── ...
+│
+├── main.tf                   # Main Terraform configuration file
+├── variables.tf              # Variable definitions
+└── outputs.tf                # Output definitions
 ```
