@@ -143,15 +143,33 @@ You goota have subnets to launch resources in the vpc..
 
 **Isolated subnet** – The subnet has no routes to destinations outside its VPC. Resources in an isolated subnet can only access or be accessed by other resources in the same VPC.
 
+[Security groups](https://docs.aws.amazon.com/vpc/latest/userguide/default-security-group.html) = In AWS VPCs, AWS Security Groups act as virtual firewalls, controlling the traffic for one or more stacks (an instance or a set of instances). When a stack is launched, it's associated with one or more security groups, which determine what traffic is allowed to reach it
+
 ## Steps
 
-\*Create VPC with CIDR 10.0.0.0/16
+1. Create VPC with CIDR 10.0.0.0/16
 
-\*Create Subnets in VPC  
-usualy 2 private 2public for diffrent az
-lets say CIDR 10.0.0.0/24 for public and 10.0.1.0/24 for private
+2. Create Subnets in VPC  
+   usualy 2 private 2public for diffrent az
+   lets say CIDR 10.0.0.0/24 for public and 10.0.1.0/24 for private
 
-\*Launch ec2 inst in the public subnet  
-chose a name, instance type, key-pair etc..  
-in network settings chose the VPC and the public subnet  
-because its a public sub we would enable 'auto assign public IP'
+3. Launch ec2 inst in the public subnet  
+   chose a name, instance type, key-pair etc..  
+   in network settings chose the VPC and the public subnet  
+   because its a public sub enable 'auto assign public IP'  
+   add a security group name
+
+4. Allowing internet accsess to our subnets  
+   create internet gateway and attach it to the vpc  
+   now we need to give our subnet a route to the internet gateway with route tables
+
+5. Create route table for our public and private subnet  
+   we do have a default route table, and rn the 2 subnets are associated with it  
+   because they dont have explicit associations.  
+   create a route table (pub_route_table) and chose the vpc  
+   create a route table (priv_route_table) and chose the vpc  
+   then associate each one (now the default is mpty)
+
+6. Route the public subnet to the internet gateway  
+   go to pub_route_table and add route, dest = 0.0.0.0/0 target = igw  
+   (now we have internet accses to the ec2 instance w ssh)
