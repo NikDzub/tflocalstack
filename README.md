@@ -194,18 +194,18 @@ Both private and public NAT gateways map the source private IPv4 address of the 
    (now we have internet accses to the ec2 instance w ssh)  
    what about the
 
-7. Launch ec2 inst in the private subnet
+7. Launch ec2 inst in the private subnet  
    chose a name, instance type, key-pair etc..  
    in network settings chose the VPC and the private subnet  
    add a security group name
    (we are able to ssh to the private ec2 from our public one
    but theres no internet acc to update pkgs for example.. NAT Gateway..
    )
-8. Setting up NAT Gateway
+8. Setting up NAT Gateway  
    to be able to reach out to the internet to update pkgs for example, but no 1 can reach 2 us  
    were gonna create it in the public subnet
    name = w/e, subnet = pub_sub, allocate elastic ip..
 
-9. Add a route from the priv_route_table to the NAT gateway
+9. Add a route from the priv_route_table to the NAT gateway  
    dest = 0.0.0.0/24 target = NAT
    (now we can update stuf in the private sub)
