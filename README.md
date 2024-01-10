@@ -145,13 +145,13 @@ You goota have subnets to launch resources in the vpc..
 
 ## Steps
 
-1. Create VPC with CIDR 10.0.0.0/16
+\*Create VPC with CIDR 10.0.0.0/16
 
-2. Create Subnets in VPC  
-   usualy 2 private 2public for diffrent az
-   lets say CIDR 10.0.0.0/24 for public and 10.0.1.0/24 for private
+\*Create Subnets in VPC  
+usualy 2 private 2public for diffrent az
+lets say CIDR 10.0.0.0/24 for public and 10.0.1.0/24 for private
 
-3. Launch ec2 inst in the public subnet  
-   chose a name, instance type, key-pair etc..  
-   in network settings chose the VPC and the public subnet  
-   because its a public sub we would enable 'auto assign public IP'
+\*Launch ec2 inst in the public subnet  
+chose a name, instance type, key-pair etc..  
+in network settings chose the VPC and the public subnet  
+because its a public sub we would enable 'auto assign public IP'
