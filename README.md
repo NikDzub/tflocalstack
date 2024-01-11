@@ -213,16 +213,16 @@ Both private and public NAT gateways map the source private IPv4 address of the 
 
 ## Terraform / best practices / notes (editing..)
 
-Resource  
+**Resource**  
 Resource is aws_vpc, aws_db_instance, etc. A resource belongs to a provider, accepts arguments, outputs attributes, and has a lifecycle
 
-Resource module  
+**Resource module**  
 Resource module is a collection of connected resources which together perform the common action (for e.g., AWS VPC Terraform module creates VPC, subnets, NAT gateway, etc). It depends on provider configuration, which can be defined in it, or in higher-level structures (e.g., in infrastructure module).
 
-Infrastructure module  
+**Infrastructure module**  
 An infrastructure module is a collection of resource modules, which can be logically not connected, but in the current situation/project/setup serves the same purpose. It defines the configuration for providers, which is passed to the downstream resource modules and to resources. It is normally limited to work in one entity per logical separator (e.g., AWS Region, Google Project).
 
-Composition  
+**Composition**  
 Composition is a collection of infrastructure modules, which can span across several logically separated areas (e.g.., AWS Regions, several AWS accounts). Composition is used to describe the complete infrastructure required for the whole organization or project.
 A composition consists of infrastructure modules, which consist of resources modules, which implement individual resources.
 
@@ -230,10 +230,10 @@ A composition consists of infrastructure modules, which consist of resources mod
 └── infra comp/
     └── infra module1/
         ├── data sources
-        ├── resource module1
+        ├── resource module1/
         │   └── data sources
         │   └── resources
-        └── resource module2
+        └── resource module2/
             └── data sources
             └── resources
 ```
