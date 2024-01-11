@@ -1,4 +1,5 @@
 `https://docs.localstack.cloud/user-guide/integrations/terraform/`
+`https://registry.terraform.io/browse/providers`
 `localstack config show`
 `localstack config validate`
 `localstack start`
@@ -127,7 +128,7 @@ then `awslocal ec2 describe-instances` or `awslocal ec2 describe-instances --fil
 
 terraform and localstack seem to work without any errors.
 
-## Networking / AWS notes
+## Networking / AWS notes (editing..)
 
 [EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html)  
 Elastic Compute Cloud,launch as many or as few virtual servers as you need, configure security and networking, and manage storage.
@@ -164,7 +165,7 @@ Instances in private subnets can connect to other VPCs or your on-premises netwo
 
 Both private and public NAT gateways map the source private IPv4 address of the instances to the private IPv4 address of the NAT gateway, but in the case of a public NAT gateway, the internet gateway then maps the private IPv4 address of the public NAT Gateway to the Elastic IP address associated with the NAT Gateway. When sending response traffic to the instances, whether it's a public or private NAT gateway, the NAT gateway translates the address back to the original source IP address.
 
-## Steps / notes
+## VPC / notes (editing..)
 
 1. Create VPC with CIDR 10.0.0.0/16
 
@@ -209,3 +210,8 @@ Both private and public NAT gateways map the source private IPv4 address of the 
 9. Add a route from the priv_route_table to the NAT gateway  
    dest = 0.0.0.0/24 target = NAT
    (now we can update stuf in the private sub)
+
+## Terraform / best practices / notes (editing..)
+
+Resources - Resource blocks represent one or more infrastructure objects in your Terraform configuration.  
+Most Terraform providers have a number of different resources that map to the appropriate APIs to manage that particular infrastructure type
