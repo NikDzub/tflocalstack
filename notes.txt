@@ -1,0 +1,7 @@
+git checkout -b v.2
+git add .
+git commit -m "."
+git checkout master
+git push origin master
+
+
