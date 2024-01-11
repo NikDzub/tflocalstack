@@ -226,6 +226,11 @@ An infrastructure module is a collection of resource modules, which can be logic
 Composition is a collection of infrastructure modules, which can span across several logically separated areas (e.g.., AWS Regions, several AWS accounts). Composition is used to describe the complete infrastructure required for the whole organization or project.
 A composition consists of infrastructure modules, which consist of resources modules, which implement individual resources.
 
+**Data source**  
+Data source performs a read-only operation and is dependant on provider configuration, it is used in a resource module and an infrastructure module.
+Data source terraform_remote_state acts as a glue for higher-level modules and compositions.
+The external data source allows an external program to act as a data source, exposing arbitrary data for use elsewhere in the Terraform configuration.
+
 ```r
 └── infra comp/
     └── infra module1/
