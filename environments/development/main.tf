@@ -54,3 +54,15 @@ module "vpc" {
   private_data_sub_az1_cidr = var.private_data_sub_az1_cidr
   private_data_sub_az2_cidr = var.private_data_sub_az2_cidr
 }
+
+module "nat_gateway" {
+  source                  = "../../modules/nat_gateway"
+  vpc_id                  = module.vpc.vpc_id
+  internet_gateway        = module.vpc.internet_gateway
+  pub_sub_az1_id          = module.vpc.pub_sub_az1_id
+  pub_sub_az2_id          = module.vpc.pub_sub_az2_id
+  private_app_sub_az1_id  = module.vpc.private_app_sub_az1_id
+  private_app_sub_az2_id  = module.vpc.private_app_sub_az2_id
+  private_data_sub_az1_id = module.vpc.private_data_sub_az1_id
+  private_data_sub_az2_id = module.vpc.private_data_sub_az2_id
+}
