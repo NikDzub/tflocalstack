@@ -71,7 +71,7 @@ resource "aws_route_table_association" "public_subnet_az1_route_table_associatio
 
 # associate public subnet az2 to "public route table"
 resource "aws_route_table_association" "public_subnet_az2_route_table_association" {
-  subnet_id      = aws_subnet.public_subnet_az2
+  subnet_id      = aws_subnet.public_subnet_az2.id
   route_table_id = aws_route_table.public_route_table.id
 }
 
@@ -114,7 +114,7 @@ resource "aws_subnet" "private_data_subnet_az1" {
 # create private data subnet az2
 resource "aws_subnet" "private_data_subnet_az2" {
   vpc_id                  = aws_vpc.vpc.id
-  cidr_block              = var.private_data_sub_az1_cidr
+  cidr_block              = var.private_data_sub_az2_cidr
   availability_zone       = data.aws_availability_zones.available_zones.names[1]
   map_public_ip_on_launch = false
 

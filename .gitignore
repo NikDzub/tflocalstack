@@ -1,4 +1,5 @@
-./././././README.md
-.terraform.lock.hcl
-terraform.tfstate
-.terraform
+READMEoooo.md
+environments/development/.terraform
+environments/development/terraform.tfstate.backup
+environments/development/terraform.tfstate
+environments/development/.terraform.lock.hcl
