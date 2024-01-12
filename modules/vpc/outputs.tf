@@ -1,4 +1,3 @@
-# main
 output "region" {
   value = var.region
 }
@@ -9,7 +8,6 @@ output "vpc_id" {
   value = aws_vpc.vpc.id
 }
 
-# public
 output "pub_sub_az1_id" {
   value = aws_subnet.public_subnet_az1.id
 }
@@ -17,7 +15,6 @@ output "pub_sub_az2_id" {
   value = aws_subnet.public_subnet_az2.id
 }
 
-# private app
 output "private_app_sub_az1_id" {
   value = aws_subnet.private_app_subnet_az1.id
 }
@@ -25,7 +22,6 @@ output "private_app_sub_az2_id" {
   value = aws_subnet.private_app_subnet_az2.id
 }
 
-# private data
 output "private_data_sub_az1_id" {
   value = aws_subnet.private_data_subnet_az1.id
 }
@@ -33,7 +29,6 @@ output "private_data_sub_az2_id" {
   value = aws_subnet.private_data_subnet_az2.id
 }
 
-# igw
 output "internet_gateway" {
-  value = aws_internet_gateway.internet_gateway
+  value = aws_internet_gateway.internet_gateway.id
 }
