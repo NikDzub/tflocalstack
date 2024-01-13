@@ -10,17 +10,14 @@ variable "vpc_cidr" {
 variable "az_count" {
   description = "Number of Availability Zones for subnets"
   type        = number
-  default     = 2
 }
 variable "pub_sub_per_az_count" {
   description = "Number of public subnets per az."
   type        = number
-  default     = 1
 }
 variable "priv_sub_per_az_count" {
   description = "Number of private subnets."
   type        = number
-  default     = 2
 }
 ##############################################
 variable "pub_sub_cidr_blocks" {
