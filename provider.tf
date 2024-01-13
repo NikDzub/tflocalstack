@@ -10,7 +10,7 @@ terraform {
 provider "aws" {
   access_key                  = "test"
   secret_key                  = "test"
-  region                      = var.region
+  region                      = "us-east-1"
   skip_credentials_validation = true
   skip_metadata_api_check     = true
   skip_requesting_account_id  = true
@@ -45,29 +45,4 @@ provider "aws" {
 data "aws_caller_identity" "current" {}
 output "is_localstack" {
   value = data.aws_caller_identity.current.id == "000000000000"
-}
-
-module "vpc" {
-  source                    = "../../modules/vpc"
-  region                    = var.region
-  project_name              = var.project_name
-  vpc_cidr                  = var.vpc_cidr
-  public_sub_az1_cidr       = var.public_sub_az1_cidr
-  public_sub_az2_cidr       = var.public_sub_az2_cidr
-  private_app_sub_az1_cidr  = var.private_app_sub_az1_cidr
-  private_app_sub_az2_cidr  = var.private_app_sub_az2_cidr
-  private_data_sub_az1_cidr = var.private_data_sub_az1_cidr
-  private_data_sub_az2_cidr = var.private_data_sub_az2_cidr
-}
-
-module "nat_gateway" {
-  source                  = "../../modules/nat_gateway"
-  vpc_id                  = module.vpc.vpc_id
-  internet_gateway        = module.vpc.internet_gateway
-  pub_sub_az1_id          = module.vpc.pub_sub_az1_id
-  pub_sub_az2_id          = module.vpc.pub_sub_az2_id
-  private_app_sub_az1_id  = module.vpc.private_app_sub_az1_id
-  private_app_sub_az2_id  = module.vpc.private_app_sub_az2_id
-  private_data_sub_az1_id = module.vpc.private_data_sub_az1_id
-  private_data_sub_az2_id = module.vpc.private_data_sub_az2_id
 }

@@ -3,7 +3,3 @@ git add .
 git commit -m "."
 git checkout master
 git push origin master
-
-awslocal ec2 describe-nat-gateways
-awslocal ec2 describe-vpcs
-
