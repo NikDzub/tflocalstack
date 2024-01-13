@@ -1,4 +1,4 @@
 module "vpc" {
   source       = "./modules/vpc"
-  project_name = "sdfdsf"
+  project_name = var.project_name
 }

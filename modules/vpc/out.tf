@@ -7,5 +7,4 @@ output "pub_subs" {
 }
 output "priv_subs" {
   value = aws_subnet.priv_sub
-
 }
