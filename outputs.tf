@@ -1,40 +1,59 @@
-output "vpc_id" {
-  value = module.vpc.vpc_id
-}
 output "pub_subs" {
   value = [
     for subnet in module.vpc.pub_subs : {
-      name = subnet.tags["Name"]
-      id   = subnet.id,
-      cidr = subnet.cidr_block
-      az   = subnet.availability_zone
+      subnet_name       = subnet.tags["Name"]
+      subnet_id         = subnet.id,
+      cidr              = subnet.cidr_block
+      availability_zone = subnet.availability_zone
     }
   ]
 }
 output "priv_subs" {
   value = [
     for subnet in module.vpc.priv_subs : {
-      name = subnet.tags["Name"]
-      id   = subnet.id,
-      cidr = subnet.cidr_block
-      az   = subnet.availability_zone
-    }
-  ]
-}
-output "pub_route_table" {
-  value = [
-    for asso in module.vpc.pub_route_table : {
-      id     = asso.id
-      sub_id = asso.subnet_id
-    }
-  ]
-}
-output "priv_route_table" {
-  value = [
-    for asso in module.vpc.priv_route_table : {
-      id     = asso.id
-      sub_id = asso.subnet_id
+      subnet_name       = subnet.tags["Name"]
+      subnet_id         = subnet.id,
+      cidr              = subnet.cidr_block
+      availability_zone = subnet.availability_zone
     }
   ]
 }
 
+output "priv_route_tables" {
+  value = [
+    for table in module.vpc.priv_route_tables : {
+      private_table_name = table.tags["Name"]
+      private_table_id   = table.id
+    }
+  ]
+}
+output "pub_route_tables" {
+  value = [
+    for table in module.vpc.pub_route_tables : {
+      public_table_name = table.tags["Name"]
+      public_table_id   = table.id
+    }
+  ]
+}
+
+output "pub_route_table_asso" {
+  value = [
+    for asso in module.vpc.pub_route_table_asso : {
+      route_table_id        = asso.route_table_id
+      association_id        = asso.id
+      association_subnet_id = asso.subnet_id
+    }
+  ]
+}
+output "priv_route_table_asso" {
+  value = [
+    for asso in module.vpc.priv_route_table_asso : {
+      route_table_id        = asso.route_table_id
+      association_id        = asso.id
+      association_subnet_id = asso.subnet_id
+    }
+  ]
+}
+output "vpc_id" {
+  value = module.vpc.vpc_id
+}

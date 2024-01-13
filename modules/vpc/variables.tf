@@ -6,20 +6,15 @@ variable "vpc_cidr" {
   type        = string
   default     = "10.0.0.0/16"
 }
-##############################################
 variable "az_count" {
   description = "Number of Availability Zones for subnets"
   type        = number
 }
+##############################################
 variable "pub_sub_per_az_count" {
   description = "Number of public subnets per az."
   type        = number
 }
-variable "priv_sub_per_az_count" {
-  description = "Number of private subnets."
-  type        = number
-}
-##############################################
 variable "pub_sub_cidr_blocks" {
   description = "Available cidr blocks for public subnets."
   type        = list(string)
@@ -33,6 +28,11 @@ variable "pub_sub_cidr_blocks" {
     "10.0.7.0/24",
     "10.0.8.0/24",
   ]
+}
+##############################################
+variable "priv_sub_per_az_count" {
+  description = "Number of private subnets."
+  type        = number
 }
 variable "priv_sub_cidr_blocks" {
   description = "Available cidr blocks for private subnets."
@@ -48,6 +48,5 @@ variable "priv_sub_cidr_blocks" {
     "10.0.18.0/24",
   ]
 }
-##############################################
 
 
