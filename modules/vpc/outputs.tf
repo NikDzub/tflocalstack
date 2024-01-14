@@ -19,3 +19,6 @@ output "priv_route_table_asso" {
 output "pub_route_table_asso" {
   value = aws_route_table_association.pub_sub_asso
 }
+output "igw" {
+  value = aws_internet_gateway.igw
+}

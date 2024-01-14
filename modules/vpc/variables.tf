@@ -10,6 +10,7 @@ variable "az_count" {
   description = "Number of Availability Zones for subnets"
   type        = number
 }
+
 ##############################################
 variable "pub_sub_per_az_count" {
   description = "Number of public subnets per az."
