@@ -2,12 +2,17 @@ those are screen shots from a tutorial
 https://www.youtube.com/watch?v=ZP_vAbjfFMs  
 
 1.  
-screenshot 1 -
-![1](https://github.com/NikDzub/tflocalstack/assets/87159434/32317619-4313-4c72-a1b2-1717a887ff67)
-https://github.com/NikDzub/tflocalstack/blob/master/modules/vpc/main.tf  
 
-multiple resources for kinda the same thing(aws_subnet)  
+![1](https://github.com/NikDzub/tflocalstack/assets/87159434/32317619-4313-4c72-a1b2-1717a887ff67)
+
+there are multiple resources for the same thing(aws_subnet)  
 acceptable? considered as best practice?  
+
+or - 
+https://github.com/NikDzub/tflocalstack/blob/master/modules/vpc/main.tf#L21  
+?
+
+2.  
 
 screenshots 2, 3 -  
 ![2](https://github.com/NikDzub/tflocalstack/assets/87159434/5d4c8455-5767-485a-ab95-b9495f1da3e4)
@@ -15,6 +20,7 @@ screenshots 2, 3 -
 
 its the "main" `main.tf` file, thats how it should look like? (for a vpc project)  
 because in my `main.tf` the vpc module is like this:  
+https://github.com/NikDzub/tflocalstack/blob/master/main.tf#L1  
 ```
 module "vpc" {
   source = "./modules/vpc"
@@ -27,10 +33,10 @@ module "vpc" {
 i guess as a terraform begginer that hes approach is better  
 but its just seem more hardcoded than mine.  
 
-2.  
-https://github.com/NikDzub/tflocalstack/blob/master/main.tf#L10
+3.  
 while adding the security groups  
 i was thinking to make a a variable `./modules/security_groups/variables.tf`  
+https://github.com/NikDzub/tflocalstack/blob/master/modules/security_group/variables.tf#L1  
 ```
 variable "security_groups" {
   type = list(object({
@@ -47,6 +53,7 @@ variable "security_groups" {
 }
 ```
 and then in :  
+https://github.com/NikDzub/tflocalstack/blob/master/main.tf#L10  
 ```
 module "security_groups" {
   source = "./modules/security_group"
