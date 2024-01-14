@@ -22,9 +22,9 @@ private_route_table_count : x (for each az)
 
 nat_gateway_count : x (1 in each az, inside the (first\*)public subnet)
 
-`terraform output`
-
 ```s
+$ terraform output
+
 is_localstack = true
 
 vpc_id = "vpc-ae447d14"
