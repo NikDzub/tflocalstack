@@ -28,29 +28,32 @@ $ terraform output
 is_localstack = true
 
 vpc_id = "vpc-ae447d14"
-
 nat_gws = [
   {
     "nat_gw__name" = "nat_gw_az_1"
     "nat_gw_id" = "nat-38000d035a250b0f5"
     "public_ip" = "127.82.136.144"
-    "subnet_id" = "subnet-a8f86f5d"
+    "subnet_id" = "subnet-a8f86f5d" # ## ## ##
   },
   {
     "nat_gw__name" = "nat_gw_az_2"
     "nat_gw_id" = "nat-a54422f60fd7fec22"
     "public_ip" = "127.9.111.123"
-    "subnet_id" = "subnet-711dc937"
+    "subnet_id" = "subnet-711dc937" # $$ $$ $$
   },
 ]
-priv_route_tables = [
+pub_subs = [
   {
-    "private_table_id" = "rtb-cade61e7"
-    "private_table_name" = "private_route_table_1"
+    "availability_zone" = "us-east-1a"
+    "cidr" = "10.0.1.0/24"
+    "subnet_id" = "subnet-a8f86f5d" # ## ## ##
+    "subnet_name" = "public_subnet_1"
   },
   {
-    "private_table_id" = "rtb-d1d0d9f9"
-    "private_table_name" = "private_route_table_2"
+    "availability_zone" = "us-east-1b"
+    "cidr" = "10.0.2.0/24"
+    "subnet_id" = "subnet-711dc937" # $$ $$ $$
+    "subnet_name" = "public_subnet_2"
   },
 ]
 priv_subs = [
@@ -85,18 +88,14 @@ pub_route_tables = [
     "public_table_name" = "public_route_table_1"
   },
 ]
-pub_subs = [
+priv_route_tables = [
   {
-    "availability_zone" = "us-east-1a"
-    "cidr" = "10.0.1.0/24"
-    "subnet_id" = "subnet-a8f86f5d"
-    "subnet_name" = "public_subnet_1"
+    "private_table_id" = "rtb-cade61e7"
+    "private_table_name" = "private_route_table_1"
   },
   {
-    "availability_zone" = "us-east-1b"
-    "cidr" = "10.0.2.0/24"
-    "subnet_id" = "subnet-711dc937"
-    "subnet_name" = "public_subnet_2"
+    "private_table_id" = "rtb-d1d0d9f9"
+    "private_table_name" = "private_route_table_2"
   },
 ]
 ```
