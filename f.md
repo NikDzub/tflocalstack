@@ -4,6 +4,7 @@ https://www.youtube.com/watch?v=ZP_vAbjfFMs
 1.  
 screenshot 1 -
 ![1](https://github.com/NikDzub/tflocalstack/assets/87159434/32317619-4313-4c72-a1b2-1717a887ff67)
+https://github.com/NikDzub/tflocalstack/blob/master/modules/vpc/main.tf  
 
 multiple resources for kinda the same thing(aws_subnet)  
 acceptable? considered as best practice?  
