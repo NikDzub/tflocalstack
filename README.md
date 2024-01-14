@@ -92,6 +92,16 @@ pub_subs = [
 ]
 ```
 
+to-do:  
+1.change file structure  
+/envs/dev/main.tf  
+instead of running apply with the -var-file
+
+2.figure a way to make security groups from a list  
+while referencing one another id's in the 'inbound rules'???
+
+3.add web servers, databases, load balancers, auto scaling, route53???
+
 `https://github.com/antonbabenko/terraform-best-practices`  
 `https://docs.localstack.cloud/user-guide/integrations/terraform/`  
 `https://registry.terraform.io/browse/providers`  
