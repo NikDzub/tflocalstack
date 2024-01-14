@@ -28,6 +28,7 @@ i guess as a terraform begginer that hes approach is better
 but its just seem more hardcoded than mine.  
 
 2.  
+https://github.com/NikDzub/tflocalstack/blob/master/main.tf#L10
 while adding the security groups  
 i was thinking to make a a variable `./modules/security_groups/variables.tf`  
 ```
