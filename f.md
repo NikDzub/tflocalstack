@@ -21,7 +21,7 @@ screenshots 2, 3 -
 its the "main" `main.tf` file, thats how it should look like? (for a vpc project)  
 because in my `main.tf` the vpc module is like this:  
 https://github.com/NikDzub/tflocalstack/blob/master/main.tf#L1  
-```
+```c
 module "vpc" {
   source = "./modules/vpc"
   project_name          = var.project_name
@@ -37,7 +37,7 @@ but its just seem more hardcoded than mine.
 while adding the security groups  
 i was thinking to make a a variable `./modules/security_groups/variables.tf`  
 https://github.com/NikDzub/tflocalstack/blob/master/modules/security_group/variables.tf#L1  
-```
+```c
 variable "security_groups" {
   type = list(object({
     name        = string
@@ -54,7 +54,7 @@ variable "security_groups" {
 ```
 and then in :  
 https://github.com/NikDzub/tflocalstack/blob/master/main.tf#L10  
-```
+```c
 module "security_groups" {
   source = "./modules/security_group"
 
