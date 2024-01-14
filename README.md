@@ -13,6 +13,15 @@ pub_sub_per_az_count  = 1
 priv_sub_per_az_count = 2
 ```
 
+availability_zone_count : x  
+public_subnets_per_availability_zone : ?  
+private_subnets_per_availability_zone : ?
+
+public_route_table_count : 1 (only one is needed)  
+private_route_table_count : x (for each az)
+
+nat_gateway_count : x (1 in each az, inside the (first\*)public subnet)
+
 `terraform output`
 
 ```s
