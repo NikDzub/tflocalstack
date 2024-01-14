@@ -73,4 +73,26 @@ resource "aws_route_table_association" "priv_sub_asso" {
   route_table_id = element(aws_route_table.priv_rt[*].id, count.index)
 }
 
+################## nat #####################
+resource "aws_eip" "eip4_nat_gw" {
+  count = var.az_count
+
+  domain = "vpc"
+  tags = {
+    Name = "eip4_nat_gw_az${count.index + 1}"
+  }
+}
+
+resource "aws_nat_gateway" "main" {
+  count = var.az_count
+
+  allocation_id = aws_eip.eip4_nat_gw[count.index].id
+  subnet_id     = aws_subnet.pub_sub[count.index].id
+  depends_on    = [aws_internet_gateway.igw]
+  tags = {
+    Name = "nat_gw_az_${count.index + 1}"
+  }
+}
+
+
 

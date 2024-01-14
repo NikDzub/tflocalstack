@@ -36,23 +36,34 @@ output "pub_route_tables" {
   ]
 }
 
-output "pub_route_table_asso" {
+# output "pub_route_table_asso" {
+#   value = [
+#     for asso in module.vpc.pub_route_table_asso : {
+#       route_table_id        = asso.route_table_id
+#       association_id        = asso.id
+#       association_subnet_id = asso.subnet_id
+#     }
+#   ]
+# }
+# output "priv_route_table_asso" {
+#   value = [
+#     for asso in module.vpc.priv_route_table_asso : {
+#       route_table_id        = asso.route_table_id
+#       association_id        = asso.id
+#       association_subnet_id = asso.subnet_id
+#     }
+#   ]
+# }
+output "nat_gws" {
   value = [
-    for asso in module.vpc.pub_route_table_asso : {
-      route_table_id        = asso.route_table_id
-      association_id        = asso.id
-      association_subnet_id = asso.subnet_id
+    for gw in module.vpc.nat_gws : {
+      nat_gw__name = gw.tags["Name"]
+      public_ip    = gw.public_ip
+      subnet_id    = gw.subnet_id
+      nat_gw_id    = gw.id
     }
   ]
-}
-output "priv_route_table_asso" {
-  value = [
-    for asso in module.vpc.priv_route_table_asso : {
-      route_table_id        = asso.route_table_id
-      association_id        = asso.id
-      association_subnet_id = asso.subnet_id
-    }
-  ]
+
 }
 output "vpc_id" {
   value = module.vpc.vpc_id
